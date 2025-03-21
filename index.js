@@ -1,4 +1,6 @@
 let loader=document.getElementById("loader")
+let container=document.createElement("div")
+container.className="container"
 
 
 async function getData()
@@ -11,6 +13,7 @@ async function getData()
       }
       let result=await response.json()
       displayData(result.message)
+     
 
     }
     catch(err)
@@ -24,10 +27,17 @@ async function getData()
     item.className="item"
   item.innerHTML=
   `<img src="${imageurl}">`
-  document.body.appendChild(item)
+  container.appendChild(item)
+  loader.remove()
+  document.body.appendChild(container)
+ 
+  
+  // container.appendChild("item")
+  // document.body.appendChild(container)
+
 
 }
-loader.remove()
+
 getData()
 
 
